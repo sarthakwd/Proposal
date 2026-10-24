@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A story, for my sweet girl</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e8e4ff; --bg2:#ffe3ee; --ink:#3a2850; --pink:#ff8fb8; --butter:#ffe27a; --mint:#b9ecd6; --paper:#fffaf2;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241a38;--bg2:#33203f;--ink:#f5ecff;--paper:#3a2c52}}
+:root[data-theme="dark"]{--bg:#241a38;--bg2:#33203f;--ink:#f5ecff;--paper:#3a2c52}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(175deg,var(--bg),var(--bg2));color:var(--ink);font-family:'Gaegu','Comic Sans MS',cursive;font-size:1.4rem;line-height:1.5}
+h1,h2{font-family:'Fredoka','Trebuchet MS',sans-serif;font-weight:600;line-height:1.1;margin:0 0 .8rem}
+h1{font-size:clamp(2.6rem,10vw,4.2rem);transform:rotate(-2deg)}
+h2{font-size:clamp(1.8rem,6vw,2.4rem)}
+.ch{min-height:80vh;display:flex;flex-direction:column;justify-content:center;max-width:620px;margin:0 auto;padding:3rem 1.4rem}
+.cover{min-height:100vh;text-align:left}
+.tag{font-family:'Fredoka',sans-serif;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:.5rem}
+.page{background:var(--paper);padding:1.5rem 1.4rem;border-radius:8px 24px 10px 22px;box-shadow:5px 6px 0 var(--c,var(--pink));transform:rotate(var(--r,-1deg))}
+.page p{margin:0 0 .9rem}.page p:last-child{margin:0}
+.reveal{opacity:0;transform:translateY(28px) rotate(var(--r,0deg));transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:translateY(0) rotate(var(--r,0deg))}
+.scroll{margin-top:2rem;opacity:.7;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(8px)}}
+.ask{text-align:center}
+.ask h2{font-size:clamp(2.2rem,8vw,3.4rem)}
+.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem}
+button{font:inherit;font-family:'Fredoka',sans-serif;font-size:1.2rem;border:0;border-radius:999px;padding:.8rem 1.8rem;cursor:pointer;color:var(--ink);box-shadow:3px 4px 0 var(--ink)}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.yes{background:var(--pink)}.later{background:var(--mint)}
+#reply{display:none;margin-top:1.8rem}#reply.show{display:block;animation:in .6s ease-out}
+@keyframes in{from{opacity:0;transform:scale(.94)}}
+.pip{position:fixed;bottom:-60px;border-radius:50%;pointer-events:none;animation:rise 3.2s ease-out forwards}
+@keyframes rise{to{transform:translateY(-115vh)}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scroll,#reply.show{animation:none}.pip{display:none}}
+</style>
+</head>
+<body>
+
+<section class="ch cover">
+  <div class="tag">a small story · for one reader</div>
+  <h1>Hey, sweet girl.</h1>
+  <p>I wrote you a story. It's short, it's true, and the last page has a question. Take your time. Read it with your heart in Baby.</p>
+  <div class="scroll">keep scrolling ↓</div>
+</section>
+
+<section class="ch">
+  <div class="tag">chapter one</div>
+  <h2>How it started</h2>
+  <div class="page reveal" style="--r:-1deg">
+    <p>We met on a Dating app, unexpectedly, unknowingly</p>
+    <p>We decided not to move forward other than friendship, remember? haha and here we are loving each other..</p>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="tag">chapter two</div>
+  <h2>What you do to my days</h2>
+  <div class="page reveal" style="--r:1deg;--c:var(--butter)">
+    <p>You are bubbly and full of life. You walk into a room and it gets lighter, and I want to be the reason that stays.</p>
+    <p>Yes I accept that i did not treat you well sometimes but my days feel empty without you..i want you forever..</p>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="tag">chapter three</div>
+  <h2>What I'm learning from you</h2>
+  <div class="page reveal" style="--r:-.6deg;--c:var(--mint)">
+    <p>You forgive me, and you let the bad things go without keeping score or taunting me for them. I never want to treat that like it's free.</p>
+    <p>I know I overreact and overdo things sometimes, and I hurt you. I'm working on it, for real and not just in words.</p>
+  </div>
+</section>
+
+<section class="ch ask">
+  <div class="tag">the last page</div>
+  <h2 class="reveal">Will you marry me?</h2>
+  <p class="reveal">I love you more than words can say, and I know it's practically impossible but we can do it baby..</p>
+  <p class="reveal">Either answer is okay. I'd rather have your honest one.</p>
+  <div class="btns">
+    <button class="yes" id="yes">Yes 💗</button>
+    <button class="later" id="later">Not yet</button>
+  </div>
+  <div id="reply" class="page" style="--r:.6deg">
+    <p id="msg"></p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.25});
+  [].forEach.call(document.querySelectorAll('.reveal'),function(el){ io.observe(el); });
+
+  var reply=document.getElementById('reply'), msg=document.getElementById('msg');
+  function answer(text){
+    msg.textContent=text;
+    reply.classList.add('show');
+    reply.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  function bubbles(){
+    var cols=['#ff8fb8','#ffe27a','#b9ecd6','#bcd4ff'];
+    for(var i=0;i<26;i++){
+      var p=document.createElement('div'), s=14+Math.random()*34;
+      p.className='pip';
+      p.style.cssText='left:'+Math.random()*100+'vw;width:'+s+'px;height:'+s+'px;background:'+cols[i%4]+';opacity:.8;animation-delay:'+Math.random()*1.2+'s';
+      document.body.appendChild(p);
+      setTimeout(function(n){return function(){n.remove()}}(p),5000);
+    }
+  }
+  document.getElementById('yes').addEventListener('click',function(){
+    bubbles();
+    answer('Yes? Really? Come tell me right now. I am already smiling.');
+  });
+  document.getElementById('later').addEventListener('click',function(){
+    answer('Thank you for being honest with me. That is a real answer, and I am glad you gave it. No pressure, no rush. I am still here, same as always.');
+  });
+})();
+</script>
+</body>
+</html>
